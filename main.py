@@ -4,7 +4,8 @@ import requests
 import json
 import random
 from replit import db
- 
+from keepAlive import keep_alive
+
 client = discord.Client()
 
 #***********Random Builds *******************
@@ -96,5 +97,7 @@ async def on_message(message):
       db["responding"] == False
       await message.channel.send("responding is off")
 
+#!!! MAntener vivo el bot
+keep_alive()
 #!!! Token
 client.run(os.getenv('TOKEN'))
