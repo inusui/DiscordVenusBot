@@ -8,14 +8,6 @@ from keepAlive import keep_alive
 
 client = discord.Client()
 
-#***********Random Builds *******************
-buildsZvZ = ["alabarda" , "perma", "enigmatico", "arco de asedio"]
-
-starter_builds = [
-  "https://imgur.com/nGrwAAM.png\nRandom Build heheo",
-  "https://imgur.com/BLHOE33.png\nRandom Build heheo",
-  "https://imgur.com/bX6hvnp.png\nRandom Build heheo",
-  "https://imgur.com/3GuiDsH.png / bot! \nRandom Build heheo"]
 
 '''******  *****'''
 if "responding" not in db.keys():
@@ -79,7 +71,7 @@ async def on_message(message):
       builds = db["builds"]
     await message.channel.send(builds)
 
-  if msg.startswith("$responding"):
+  '''if msg.startswith("$responding"):
     value = msg.split("$responding",1)[1]
 
     if value.lower() == "True":
@@ -87,7 +79,15 @@ async def on_message(message):
       await message.channel.send("responding is on")
     else:
       db["responding"] == False
-      await message.channel.send("responding is off")
+      await message.channel.send("responding is off")'''
+  
+  if msg.startswith("$keys"):
+    keys = db.keys()
+    print ("*************Estas son las llaves\n" , keys)
+  
+  if msg.startswith("$delete"):
+     del db["key"]
+
 
 #!!! MAntener vivo el bot
 keep_alive()
